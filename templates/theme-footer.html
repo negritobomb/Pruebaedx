@@ -1,0 +1,67 @@
+## mako
+<%! from django.utils.translation import ugettext as _ %>
+<%! from microsite_configuration.templatetags.microsite import platform_name %>
+<%namespace name='static' file='static_content.html'/>
+
+<footer>
+  <div class="footer-container">
+    <nav class="nav">
+      <ul>
+        %if settings.MKTG_URL_LINK_MAP.get('ABOUT'):
+        <li>
+          <a id="about" href="${marketing_link('ABOUT')}">${_("About")}</a>
+        </li>
+        %endif
+        %if settings.MKTG_URL_LINK_MAP.get('FAQ'):
+        <li>
+          <a id="faq" href="//cloudgenius.freshdesk.com/" target="_blank">${_("FAQ")}</a>
+        </li>
+        %endif
+        %if settings.MKTG_URL_LINK_MAP.get('CONTACT'):
+        <li>
+          <a id="contact" href="${marketing_link('CONTACT')}">${_("Contact")}</a>
+        </li>
+        %endif
+        %if settings.MKTG_URL_LINK_MAP.get('TOS'):
+        <li>
+          <a href="${marketing_link('TOS')}">${_("TOS")}</a>
+        </li>
+        %endif
+        %if settings.MKTG_URL_LINK_MAP.get('HONOR'):
+        <li>
+          <a href="${marketing_link('HONOR')}">${_("Honor")}</a>
+        </li>
+        %endif
+        %if settings.MKTG_URL_LINK_MAP.get('PRIVACY'):
+        <li>
+          <a href="${marketing_link('PRIVACY')}">${_("Privacy")}</a>
+        </li>
+        <li class="social-item"><a href="http://www.facebook.com/beacloudgenius" target="_blank"><i class="fa fa-facebook fa-lg"></i></a>
+        </li>
+        <li class="social-item"><a href="http://www.instagram.com/beacloudgenius" target="_blank"><i class="fa fa-instagram fa-lg"></i></a>
+        </li>
+        <li class="social-item"><a href="https://www.youtube.com/channel/UCvygomQdqFv_p0c00EYufPA" target="_blank"><i class="fa fa-youtube fa-lg"></i></a>
+        </li>
+        <li class="social-item"><a href="http://www.twitter.com/beacloudgenius" target="_blank"><i class="fa fa-twitter fa-lg"></i></a>
+        </li>
+        <li class="social-item"><a href="https://plus.google.com/+NileshLondheHere/photos" target="_blank"><i class="fa fa-google-plus fa-lg"></i></a>
+        </li>
+        <li class="social-item"><a href="https://www.linkedin.com/edu/alumni?name=Cloud+Genius" target="_blank"><i class="fa fa-linkedin fa-lg"></i></a>
+        </li>
+        <li class="social-item"><a href="https://www.meetup.com/cloudgenius" target="_blank"><i class="fa fa-users fa-lg"></i></a>
+        </li>
+        %endif
+      </ul>
+    </nav>
+    <div>
+      <p class="copyright">${_(u"© 2011-2015 {platform_name}, all rights reserved.").format(platform_name=platform_name())}
+        Powered by <a href="http://code.edx.org">Open edX.</a>
+      </p>
+    </div>
+    <div class="by-ionisx">
+      <a href="//be.a.cloudgeni.us">
+        <img src="${static.url('themes/{theme_name}/images/logo-x-white-small.png'.format(theme_name=settings.THEME_NAME))}" width="47" height="32" alt="Be a Cloud Genius">
+      </a>
+    </div>
+  </div>
+</footer>
